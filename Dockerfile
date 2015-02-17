@@ -11,7 +11,8 @@ ADD etc/consul.d/ /etc/consul.d/
 ADD etc/syslog-ng/conf.d/logstash.conf /etc/syslog-ng/conf.d/logstash.conf
 
 # Redis
-RUN yum install -y redis
+RUN yum install -y redis python-redis
+ADD etc/diamond/collectors/RedisCollector.conf /etc/diamond/collectors/
 
 # Add key,cert
 ADD etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/
