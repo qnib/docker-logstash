@@ -1,0 +1,23 @@
+FROM qnib/terminal
+MAINTAINER "Christian Kniep <christian@qnib.org>"
+
+ADD etc/yum.repos.d/logstash-1.4.repo /etc/yum.repos.d/
+
+# logstash
+RUN useradd jls && \
+    yum install -y logstash
+ADD etc/default/logstash /etc/default/logstash
+ADD etc/consul.d/ /etc/consul.d/
+ADD etc/syslog-ng/conf.d/logstash.conf /etc/syslog-ng/conf.d/logstash.conf
+
+# Redis
+RUN yum install -y redis
+
+# Should move to terminal
+ADD opt/qnib/bin/ /opt/qnib/bin/
+ADD etc/supervisord.d/ /etc/supervisord.d/
+
+# move up
+RUN mv /root/bin/startup_sshd.sh /opt/qnib/bin/ && \
+    rm -f /root/bin/* && \
+    ln -s /opt/qnib/bin/* /root/bin/
