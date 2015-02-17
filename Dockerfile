@@ -13,6 +13,10 @@ ADD etc/syslog-ng/conf.d/logstash.conf /etc/syslog-ng/conf.d/logstash.conf
 # Redis
 RUN yum install -y redis
 
+# Add key,cert
+ADD etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/
+ADD etc/pki/tls/private/logstash-forwarder.key /etc/pki/tls/private/
+
 # Should move to terminal
 ADD opt/qnib/bin/ /opt/qnib/bin/
 ADD etc/supervisord.d/ /etc/supervisord.d/
