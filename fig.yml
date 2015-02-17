@@ -1,0 +1,18 @@
+logstash:
+  #image: qnib/logstash
+  build: .
+  ports:
+   - "6379:6379"
+   - "5514:5514"
+   - "5500:5500"
+  environment:
+  - DC_NAME=monitor
+  - SERVICE_6379_NAME=redis
+  - SERVICE_5500_NAME=lumberjack
+  - SERVICE_5514_NAME=syslog
+  - SERVICE_TAGS=logstash
+  dns: 127.0.0.1
+  hostname: logstash
+  volumes:
+  - ./etc/default/logstash/:/etc/logstash/conf.d/
+  privileged: true
