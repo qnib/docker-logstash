@@ -22,6 +22,5 @@ ADD opt/qnib/bin/ /opt/qnib/bin/
 ADD etc/supervisord.d/ /etc/supervisord.d/
 
 # move up
-RUN mv /root/bin/startup_sshd.sh /opt/qnib/bin/ && \
-    rm -f /root/bin/* && \
+RUN mkdir -p /root/bin/ && \
     ln -s /opt/qnib/bin/* /root/bin/

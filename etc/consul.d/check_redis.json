@@ -1,0 +1,10 @@
+{
+  "service": {
+    "name": "redis",
+    "port": 6379,
+    "check": {
+      "script": "redis-cli INFO Server",
+      "interval": "10s"
+    }
+  }
+}
