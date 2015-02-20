@@ -8,7 +8,6 @@ RUN useradd jls && \
     yum install -y logstash
 ADD etc/default/logstash /etc/default/logstash
 ADD etc/consul.d/ /etc/consul.d/
-ADD etc/syslog-ng/conf.d/logstash.conf /etc/syslog-ng/conf.d/logstash.conf
 
 # Redis
 RUN yum install -y redis python-redis
