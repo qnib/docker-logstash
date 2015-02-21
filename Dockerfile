@@ -9,5 +9,3 @@ RUN useradd jls && \
 ADD opt/qnib/bin/ /opt/qnib/bin/
 ADD etc/supervisord.d/ /etc/supervisord.d/
 ADD etc/consul.d/ /etc/consul.d/
-
-#ADD etc/default/logstash /etc/default/logstash
