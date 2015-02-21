@@ -1,0 +1,11 @@
+{
+  "service": {
+    "name": "lumberjack",
+    "tags": ["logstash"],
+    "port": 5500,
+    "check": {
+      "script": "supervisorctl status logstash|grep RUNNING",
+      "interval": "10s"
+    }
+  }
+}
