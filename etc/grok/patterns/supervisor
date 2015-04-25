@@ -1,0 +1,13 @@
+# carbon-cache
+SD_PROG (?:[\d\w\-]+)
+
+# fatal|error|sched
+SLURM_LEVEL (fatal|error)
+SLURM_TASK (sched|job-schedule|job_complete)
+
+# slurmctld: sched: Backfill scheduler plugin loaded
+# slurmctld: fatal: slurm_set_addr failure on compute0
+# slurmctld: error: Configured MailProg is invalid
+# slurmctld: started
+# slurmctld: Munge cryptographic signature plugin loaded
+SLURM_MSG %{SD_PROG:slurm_daemon}\: (?:(%{SLURM_LEVEL:slurm_level}|%{SLURM_TASK:slurm_task}): )?%{GREEDYDATA:message}

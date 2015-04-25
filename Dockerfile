@@ -38,5 +38,6 @@ RUN wget -q -O /opt/logstash-filter-grok.zip https://github.com/logstash-plugins
 # bootstrap logstash
 RUN echo 'gem "thread_safe"' >> /opt/logstash/Gemfile
 RUN cd /opt/logstash/ && rake bootstrap
-#RUN cp /opt/logstash_rpm/lib/logstash/outputs/elasticsearch_http.rb /opt/logstash/lib/logstash/outputs/ && \
-#    cp /opt/logstash_rpm/lib/logstash/filters/{mutate.rb,date.rb,grok.rb} /opt/logstash/lib/logstash/filters/
+RUN cp /opt/logstash_rpm/lib/logstash/outputs/elasticsearch_http.rb /opt/logstash/lib/logstash/outputs/ && \
+    cp /opt/logstash_rpm/lib/logstash/filters/date.rb /opt/logstash/lib/logstash/filters/
+ADD etc/grok/ /etc/grok/
