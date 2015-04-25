@@ -25,4 +25,4 @@ RUN wget -q -O /opt/logstash-filter-zeromq.zip https://github.com/barravi/logsta
     echo 'gem "logstash-filter-zeromq", :path => "/opt/logstash-filter-zeromq-master/"' >> /opt/logstash/Gemfile
 
 # bootstrap logstash
-#RUN cd /opt/logstash/ && rake bootstrap
+RUN cd /opt/logstash/ && rake bootstrap
