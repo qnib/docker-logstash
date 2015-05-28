@@ -1,15 +1,13 @@
 FROM qnib/terminal
 MAINTAINER "Christian Kniep <christian@qnib.org>"
 
-ADD etc/yum.repos.d/logstash-1.4.repo /etc/yum.repos.d/
-
 ## logstash
 ADD opt/qnib/bin/ /opt/qnib/bin/
 ADD etc/supervisord.d/ /etc/supervisord.d/
 ADD etc/consul.d/ /etc/consul.d/
 RUN yum install -y python-zmq zeromq czmq && \
-    ln -s /usr/lib64/libzmq.so.1 /usr/lib64/libzmq.so
-RUN yum install -y ruby rubygem-rake
+    ln -s /usr/lib64/libzmq.so.1 /usr/lib64/libzmq.so && \
+    yum install -y ruby rubygem-rake java-1.7.0-openjdk
 # logstash
 RUN cd /opt/ && wget -q https://github.com/elastic/logstash/archive/master.zip && unzip -q master.zip && \
     mv /opt/logstash-master /opt/logstash && rm -f /opt/master.zip
@@ -79,6 +77,5 @@ RUN wget -q -O /opt/logstash-output-elasticsearch_http.zip https://github.com/lo
     echo 'gem "logstash-output-elasticsearch_http", :path => "/opt/logstash-output-elasticsearch_http-master/"' >> /opt/logstash/Gemfile
 # bootstrap logstash
 RUN echo 'gem "thread_safe"' >> /opt/logstash/Gemfile
-RUN yum install -y java-1.7.0-openjdk
 RUN cd /opt/logstash/ && rake bootstrap
 ADD etc/grok/ /etc/grok/
