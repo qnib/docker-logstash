@@ -18,6 +18,7 @@ function watch_lock {
 ##### logstash conf bt default is empty.
 # it might be mapped from the host
 # if no config is given it is prefilled with the default
+mkdir -p /etc/logstash/conf.d/
 if [ $(find /etc/logstash/conf.d/ -name \*.conf|wc -l) -eq 0 ];then
     echo "## Logstash/conf.d empty. Copying default config..."
     echo "cp /etc/default/logstash/*.conf /etc/logstash/conf.d/"
