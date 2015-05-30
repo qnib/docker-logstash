@@ -83,3 +83,5 @@ RUN wget -q -O /opt/logstash-output-elasticsearch_http.zip https://github.com/lo
 RUN echo 'gem "thread_safe"' >> /opt/logstash/Gemfile
 RUN cd /opt/logstash/ && rake bootstrap
 ADD etc/grok/ /etc/grok/
+
+RUN echo "tail -f /var/log/supervisor/logstash.log" >> /root/.bash_history
