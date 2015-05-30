@@ -28,6 +28,10 @@ RUN wget -q -O /opt/logstash-codec-json.zip https://github.com/logstash-plugins/
 RUN wget -q -O /opt/logstash-codec-json_lines.zip https://github.com/logstash-plugins/logstash-codec-json_lines/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-codec-json_lines.zip && rm -f /opt/logstash-codec-json_lines.zip && \
     echo 'gem "logstash-codec-json_lines", :path => "/opt/logstash-codec-json_lines-master/"' >> /opt/logstash/Gemfile
+# rubydebug
+RUN wget -q -O /opt/logstash-codec-rubydebug.zip https://github.com/logstash-plugins/logstash-codec-rubydebug/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-codec-rubydebug.zip && rm -f /opt/logstash-codec-rubydebug.zip && \
+    echo 'gem "logstash-codec-rubydebug", :path => "/opt/logstash-codec-rubydebug-master/"' >> /opt/logstash/Gemfile
 #### INPUTS
 # syslog
 RUN wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins/logstash-input-stdin/archive/master.zip && \
