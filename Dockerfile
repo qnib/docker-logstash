@@ -46,10 +46,13 @@ RUN wget -q -O /opt/logstash-filter-zeromq.zip https://github.com/barravi/logsta
     wget -q -O /opt/logstash-filter-date.zip https://github.com/logstash-plugins/logstash-filter-date/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-date.zip && rm -f /opt/logstash-filter-date.zip && \
     echo 'gem "logstash-filter-date", :path => "/opt/logstash-filter-date-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-filter-geoip.zip https://github.com/logstash-plugins/logstash-filter-geoip/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-filter-geoip.zip && rm -f /opt/logstash-filter-geoip.zip && \
+    echo 'gem "logstash-filter-geoip", :path => "/opt/logstash-filter-geoip-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-filter-drop.zip https://github.com/logstash-plugins/logstash-filter-drop/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-drop.zip && rm -f /opt/logstash-filter-drop.zip && \
     echo 'gem "logstash-filter-drop", :path => "/opt/logstash-filter-drop-master/"' >> /opt/logstash/Gemfile && \
-   wget -q -O /opt/logstash-filter-json.zip https://github.com/logstash-plugins/logstash-filter-json/archive/master.zip && \
+    wget -q -O /opt/logstash-filter-json.zip https://github.com/logstash-plugins/logstash-filter-json/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-json.zip && rm -f /opt/logstash-filter-json.zip && \
     echo 'gem "logstash-filter-json", :path => "/opt/logstash-filter-json-master/"' >> /opt/logstash/Gemfile 
 #### OUTPUTS
