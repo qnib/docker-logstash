@@ -26,13 +26,17 @@ RUN wget -q -O /opt/logstash-codec-line.zip https://github.com/logstash-plugins/
     echo 'gem "logstash-codec-json_lines", :path => "/opt/logstash-codec-json_lines-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-codec-rubydebug.zip https://github.com/logstash-plugins/logstash-codec-rubydebug/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-codec-rubydebug.zip && rm -f /opt/logstash-codec-rubydebug.zip && \
-    echo 'gem "logstash-codec-rubydebug", :path => "/opt/logstash-codec-rubydebug-master/"' >> /opt/logstash/Gemfile && \
-    wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins/logstash-input-stdin/archive/master.zip && \
+    echo 'gem "logstash-codec-rubydebug", :path => "/opt/logstash-codec-rubydebug-master/"' >> /opt/logstash/Gemfile
+##### INPUTS
+RUN wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins/logstash-input-stdin/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-stdin.zip && rm -f /opt/logstash-input-stdin.zip && \
     echo 'gem "logstash-input-stdin", :path => "/opt/logstash-input-stdin-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-input-syslog.zip https://github.com/logstash-plugins/logstash-input-syslog/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-syslog.zip && rm -f /opt/logstash-input-syslog.zip && \
-    echo 'gem "logstash-input-syslog", :path => "/opt/logstash-input-syslog-master/"' >> /opt/logstash/Gemfile 
+    echo 'gem "logstash-input-syslog", :path => "/opt/logstash-input-syslog-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-input-file.zip https://github.com/logstash-plugins/logstash-input-file/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-input-file.zip && rm -f /opt/logstash-input-file.zip && \
+    echo 'gem "logstash-input-file", :path => "/opt/logstash-input-file-master/"' >> /opt/logstash/Gemfile 
 #### FILTERS
 RUN wget -q -O /opt/logstash-filter-zeromq.zip https://github.com/barravi/logstash-filter-zeromq/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-zeromq.zip && rm -f /opt/logstash-filter-zeromq.zip && \
