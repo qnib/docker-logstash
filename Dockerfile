@@ -63,6 +63,9 @@ RUN wget -q -O /opt/logstash-output-stdout.zip https://github.com/logstash-plugi
     wget -q -O /opt/logstash-output-elasticsearch.zip https://github.com/logstash-plugins/logstash-output-elasticsearch/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-output-elasticsearch.zip && rm -f /opt/logstash-output-elasticsearch.zip && \
     echo 'gem "logstash-output-elasticsearch", :path => "/opt/logstash-output-elasticsearch-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-output-statsd.zip https://github.com/logstash-plugins/logstash-output-statsd/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-output-statsd.zip && rm -f /opt/logstash-output-statsd.zip && \
+    echo 'gem "logstash-output-statsd", :path => "/opt/logstash-output-statsd-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-output-elasticsearch_http.zip https://github.com/logstash-plugins/logstash-output-elasticsearch_http/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-output-elasticsearch_http.zip && rm -f /opt/logstash-output-elasticsearch_http.zip && \
     echo 'gem "logstash-output-elasticsearch_http", :path => "/opt/logstash-output-elasticsearch_http-master/"' >> /opt/logstash/Gemfile
