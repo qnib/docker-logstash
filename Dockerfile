@@ -58,7 +58,7 @@ RUN wget -q -O /opt/logstash-filter-zeromq.zip https://github.com/barravi/logsta
     echo 'gem "logstash-filter-drop", :path => "/opt/logstash-filter-drop-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-filter-json.zip https://github.com/logstash-plugins/logstash-filter-json/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-json.zip && rm -f /opt/logstash-filter-json.zip && \
-    echo 'gem "logstash-filter-json", :path => "/opt/logstash-filter-json-master/"' >> /opt/logstash/Gemfile 
+    echo 'gem "logstash-filter-json", :path => "/opt/logstash-filter-json-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-filter-ruby.zip https://github.com/logstash-plugins/logstash-filter-ruby/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-filter-ruby.zip && rm -f /opt/logstash-filter-ruby.zip && \
     echo 'gem "logstash-filter-ruby", :path => "/opt/logstash-filter-ruby-master/"' >> /opt/logstash/Gemfile 
