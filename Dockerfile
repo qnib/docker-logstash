@@ -7,7 +7,7 @@ ADD etc/supervisord.d/ /etc/supervisord.d/
 ADD etc/consul.d/ /etc/consul.d/
 RUN yum install -y python-zmq zeromq czmq && \
     ln -s /usr/lib64/libzmq.so.1 /usr/lib64/libzmq.so && \
-    yum install -y ruby rubygem-rake java-1.7.0-openjdk && \
+    yum install -y ruby rubygem-rake java-1.8.0-openjdk-headless && \
     cd /opt/ && wget -q https://github.com/elastic/logstash/archive/master.zip && unzip -q master.zip && \
     mv /opt/logstash-master /opt/logstash && rm -f /opt/master.zip
 #### CODECS
@@ -27,7 +27,10 @@ RUN wget -q -O /opt/logstash-codec-line.zip https://github.com/logstash-plugins/
     echo 'gem "logstash-codec-json_lines", :path => "/opt/logstash-codec-json_lines-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-codec-rubydebug.zip https://github.com/logstash-plugins/logstash-codec-rubydebug/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-codec-rubydebug.zip && rm -f /opt/logstash-codec-rubydebug.zip && \
-    echo 'gem "logstash-codec-rubydebug", :path => "/opt/logstash-codec-rubydebug-master/"' >> /opt/logstash/Gemfile
+    echo 'gem "logstash-codec-rubydebug", :path => "/opt/logstash-codec-rubydebug-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-codec-oldlogstashjson.zip https://github.com/logstash-plugins/logstash-codec-oldlogstashjson/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-codec-oldlogstashjson.zip && rm -f /opt/logstash-codec-oldlogstashjson.zip && \
+    echo 'gem "logstash-codec-oldlogstashjson", :path => "/opt/logstash-codec-oldlogstashjson-master/"' >> /opt/logstash/Gemfile 
 ##### INPUTS
 RUN wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins/logstash-input-stdin/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-stdin.zip && rm -f /opt/logstash-input-stdin.zip && \
@@ -35,6 +38,9 @@ RUN wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins
     wget -q -O /opt/logstash-input-syslog.zip https://github.com/logstash-plugins/logstash-input-syslog/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-syslog.zip && rm -f /opt/logstash-input-syslog.zip && \
     echo 'gem "logstash-input-syslog", :path => "/opt/logstash-input-syslog-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-input-kafka.zip https://github.com/logstash-plugins/logstash-input-kafka/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-input-kafka.zip && rm -f /opt/logstash-input-kafka.zip && \
+    echo 'gem "logstash-input-kafka", :path => "/opt/logstash-input-kafka-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-input-udp.zip https://github.com/logstash-plugins/logstash-input-udp/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-udp.zip && rm -f /opt/logstash-input-udp.zip && \
     echo 'gem "logstash-input-udp", :path => "/opt/logstash-input-udp-master/"' >> /opt/logstash/Gemfile && \
