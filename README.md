@@ -1,4 +1,8 @@
 # docker-logstash
+
+[![](https://badge.imagelayers.io/qnib/logstash:latest.svg)](https://imagelayers.io/?images=qnib/logstash:latest 'Details')
+[![](https://badge.imagelayers.io/qnib/logstash:trunk.svg)](https://imagelayers.io/?images=qnib/logstash:trunk 'Details')
+
 Image to take events in and pump them into Redis server (to be picked-up by 'real' elk instance).
 
 ## Using it
