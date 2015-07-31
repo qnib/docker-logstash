@@ -1,4 +1,4 @@
-FROM qnib/terminal:light
+FROM qnib/terminal
 MAINTAINER "Christian Kniep <christian@qnib.org>"
 
 ## logstash
@@ -35,6 +35,9 @@ RUN wget -q -O /opt/logstash-input-stdin.zip https://github.com/logstash-plugins
     wget -q -O /opt/logstash-input-syslog.zip https://github.com/logstash-plugins/logstash-input-syslog/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-syslog.zip && rm -f /opt/logstash-input-syslog.zip && \
     echo 'gem "logstash-input-syslog", :path => "/opt/logstash-input-syslog-master/"' >> /opt/logstash/Gemfile && \
+    wget -q -O /opt/logstash-input-udp.zip https://github.com/logstash-plugins/logstash-input-udp/archive/master.zip && \
+    cd /opt/ && unzip -q /opt/logstash-input-udp.zip && rm -f /opt/logstash-input-udp.zip && \
+    echo 'gem "logstash-input-udp", :path => "/opt/logstash-input-udp-master/"' >> /opt/logstash/Gemfile && \
     wget -q -O /opt/logstash-input-file.zip https://github.com/logstash-plugins/logstash-input-file/archive/master.zip && \
     cd /opt/ && unzip -q /opt/logstash-input-file.zip && rm -f /opt/logstash-input-file.zip && \
     echo 'gem "logstash-input-file", :path => "/opt/logstash-input-file-master/"' >> /opt/logstash/Gemfile 
