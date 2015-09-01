@@ -1,4 +1,4 @@
-FROM qnib/terminal
+FROM qnib/terminal:cos7
 MAINTAINER "Christian Kniep <christian@qnib.org>"
 
 ## logstash
