@@ -1,16 +1,14 @@
-FROM qnib/terminal:cos7
-MAINTAINER "Christian Kniep <christian@qnib.org>"
+FROM qnib/terminal:fd22
 
 ## logstash
 ADD opt/qnib/bin/ /opt/qnib/bin/
 ADD etc/supervisord.d/ /etc/supervisord.d/
 ADD etc/consul.d/ /etc/consul.d/
-RUN yum install -y python-zmq zeromq czmq && \
+RUN dnf install -y python-zmq zeromq czmq && \
     ln -s /usr/lib64/libzmq.so.1 /usr/lib64/libzmq.so && \
-    yum install -y ruby rubygem-rake java-1.8.0-openjdk-headless && \
+    dnf install -y ruby rubygem-rake java-1.8.0-openjdk-headless && \
     cd /opt/ && wget -q https://github.com/elastic/logstash/archive/master.zip && unzip -q master.zip && \
     mv /opt/logstash-master /opt/logstash && rm -f /opt/master.zip
-RUN yum install -y bsdtar
 #### CODECS
 # line
 RUN echo "" >> /opt/logstash/Gemfile && \
