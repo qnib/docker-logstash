@@ -27,6 +27,8 @@ RUN echo "" >> /opt/logstash/Gemfile && \
 ##### INPUTS
 RUN curl -fsL https://github.com/logstash-plugins/logstash-input-stdin/archive/master.zip |bsdtar xf - -C /opt/ && \
     echo 'gem "logstash-input-stdin", :path => "/opt/logstash-input-stdin-master/"' >> /opt/logstash/Gemfile && \
+    curl -fsL https://github.com/logstash-plugins/logstash-input-redis/archive/master.zip |bsdtar xf - -C /opt/ && \
+    echo 'gem "logstash-input-redis", :path => "/opt/logstash-input-redis-master/"' >> /opt/logstash/Gemfile && \
     curl -fsL https://github.com/logstash-plugins/logstash-input-syslog/archive/master.zip |bsdtar xf - -C /opt/ && \
     echo 'gem "logstash-input-syslog", :path => "/opt/logstash-input-syslog-master/"' >> /opt/logstash/Gemfile && \
     curl -fsL https://github.com/logstash-plugins/logstash-input-kafka/archive/master.zip |bsdtar xf - -C /opt/ && \
