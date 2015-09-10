@@ -1,5 +1,4 @@
 FROM qnib/terminal
-MAINTAINER "Christian Kniep <christian@qnib.org>"
 
 ADD etc/yum.repos.d/logstash-1.4.repo /etc/yum.repos.d/
 
