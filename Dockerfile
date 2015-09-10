@@ -1,5 +1,4 @@
-FROM qnib/terminal:cos7
-MAINTAINER "Christian Kniep <christian@qnib.org>"
+FROM qnib/terminal
 
 ## logstash
 ADD opt/qnib/bin/ /opt/qnib/bin/
@@ -10,7 +9,12 @@ RUN yum install -y python-zmq zeromq czmq && \
     yum install -y ruby rubygem-rake java-1.8.0-openjdk-headless && \
     cd /opt/ && wget -q https://github.com/elastic/logstash/archive/master.zip && unzip -q master.zip && \
     mv /opt/logstash-master /opt/logstash && rm -f /opt/master.zip
-RUN yum install -y bsdtar
+RUN yum install -y bsdtar git-core
+
+#### free Gemfile from filters in/output
+RUN sed -i''  '/gem "logstash-filter.*"/d' /opt/logstash/Gemfile && \
+    sed -i'' '/gem "logstash-input.*"/d' /opt/logstash/Gemfile && \
+    sed -i'' '/gem "logstash-output.*"/d' /opt/logstash/Gemfile
 #### CODECS
 # line
 RUN echo "" >> /opt/logstash/Gemfile && \
