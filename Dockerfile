@@ -1,11 +1,11 @@
-FROM qnib/java8
+FROM qnib/java8:fd22
 
 ADD etc/yum.repos.d/logstash.repo /etc/yum.repos.d/
 
 # logstash
-RUN echo "2015-05-28.1" && yum clean all &&  \
+RUN echo "2015-05-28.1" && dnf clean all &&  \
     useradd jls && \
-    yum install -y logstash && \
+    dnf install -y logstash && \
     /opt/logstash/bin/plugin install \
          logstash-codec-oldlogstashjson \
          logstash-input-tcp \
