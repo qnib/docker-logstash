@@ -24,6 +24,20 @@ if [ $(find /etc/logstash/conf.d/ -name \*.conf|wc -l) -eq 0 ];then
     cp /etc/default/logstash/*.conf /etc/logstash/conf.d/
 fi
 
+### check inputs to remove checks
+CONSUL_RELOAD=0
+if [ $(grep -A3 "syslog {"  /etc/logstash/conf.d/log.conf |grep -c 5514) -eq 0 ];then 
+    rm -f /etc/consul.d/logstash_syslog.json
+    CONSUL_RELOAD=1
+fi
+if [ $(grep -A3 "udp {"  /etc/logstash/conf.d/log.conf |grep -c 55514) -eq 0 ];then 
+    rm -f /etc/consul.d/logstash_udp.json
+    CONSUL_RELOAD=1
+fi
+if [ ${CONSUL_RELOAD} -eq 1 ];then
+    consul reload
+fi
+
 ## Start logstash watchdog
 rm -f /etc/logstash/conf.d/remove_to_restart_logstash
 watch_lock
