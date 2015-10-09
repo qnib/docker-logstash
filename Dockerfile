@@ -8,6 +8,7 @@ RUN echo "2015-05-28.1" && yum clean all &&  \
     yum install -y logstash && \
     /opt/logstash/bin/plugin install \
          logstash-codec-oldlogstashjson \
+         logstash-input-elasticsearch \
          logstash-input-tcp \
          logstash-input-udp \
          logstash-input-syslog \
