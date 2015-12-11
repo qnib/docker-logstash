@@ -13,6 +13,7 @@ RUN yum install -y bsdtar git-core python-zmq zeromq czmq && \
 RUN sed -i''  '/gem "logstash-filter.*"/d' /opt/logstash/Gemfile && \
     sed -i'' '/gem "logstash-input.*"/d' /opt/logstash/Gemfile && \
     sed -i'' '/gem "logstash-output.*"/d' /opt/logstash/Gemfile
+
 #### CODECS
 # line
 RUN echo "" >> /opt/logstash/Gemfile && \
@@ -39,6 +40,7 @@ RUN git clone https://github.com/logstash-plugins/logstash-input-stdin/ /opt/log
     echo 'gem "logstash-input-udp", :path => "/opt/logstash-input-udp/"' >> /opt/logstash/Gemfile && \
     git clone https://github.com/logstash-plugins/logstash-input-file/ /opt/logstash-input-file/ && \
     echo 'gem "logstash-input-file", :path => "/opt/logstash-input-file/"' >> /opt/logstash/Gemfile 
+
 #### FILTERS
 RUN git clone https://github.com/logstash-plugins/logstash-filter-zeromq/ /opt/logstash-filter-zeromq/ && \
     echo 'gem "logstash-filter-zeromq", :path => "/opt/logstash-filter-zeromq/"' >> /opt/logstash/Gemfile && \
