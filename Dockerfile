@@ -5,7 +5,7 @@ ADD etc/yum.repos.d/logstash.repo /etc/yum.repos.d/
 # logstash
 RUN echo "2015-05-28.1" && yum clean all &&  \
     useradd jls && \
-    yum install -y jq bc && \
+    yum install -y jq bc czmq-devel && \
     yum install -y logstash && \
     /opt/logstash/bin/plugin install \
          logstash-codec-oldlogstashjson \
