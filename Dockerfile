@@ -15,6 +15,7 @@ RUN echo "2015-05-28.1" && yum clean all &&  \
          logstash-input-syslog \
          logstash-filter-grok \
          logstash-filter-mutate \
+         logstash-filter-zeromq \
          logstash-output-elasticsearch \
          logstash-output-kafka
 ADD opt/qnib/bin/ /opt/qnib/bin/
