@@ -26,11 +26,11 @@ fi
 
 ### check inputs to remove checks
 CONSUL_RELOAD=0
-if [ $(grep -A3 "syslog {"  /etc/logstash/conf.d/log.conf |grep -c 5514) -eq 0 ];then 
+if [ $(grep -A3 "syslog {"  /etc/logstash/conf.d/*.conf |grep -c 5514) -eq 0 ];then 
     rm -f /etc/consul.d/logstash_syslog.json
     CONSUL_RELOAD=1
 fi
-if [ $(grep -A3 "udp {"  /etc/logstash/conf.d/log.conf |grep -c 55514) -eq 0 ];then 
+if [ $(grep -A3 "udp {"  /etc/logstash/conf.d/*.conf |grep -c 55514) -eq 0 ];then 
     rm -f /etc/consul.d/logstash_udp.json
     CONSUL_RELOAD=1
 fi
